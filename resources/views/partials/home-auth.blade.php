@@ -7,7 +7,7 @@
             <a href="{{route('clothes.create')}}">Criar Produto</a>
         </div>
         <div class="box-catalogo">
-            <a href="">Catalogo</a>
+            <a href="">Catálogo</a>
         </div>
         <div class="box-apagar">
             <a href="">Apagar Produto</a>
