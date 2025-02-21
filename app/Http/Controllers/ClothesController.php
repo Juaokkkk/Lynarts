@@ -27,22 +27,28 @@ class ClothesController extends Controller
     }
 
 
-    public function store(ClothesRequest $request)
+    public function store(Request $request)
     {
-        // $size = new Size();
-        // $size->name = "banana";
-        // $size->save();
-
-        // $style = new Style();
-        // $style->name = "banana";
-        // $style->save();
-
-        // Clothes::create($request->validated());
-        // return dd("olá mundo");
-
-        die("estou o store");
+      
+        $validatedData = $request->validate([
+            'description' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'id_size' => 'required|numeric|min:0',
+            'id_style' => 'required|numeric|min:0',
+        ]);
+    
+        // Criando um novo registro no banco
+        $clothes = Clothes::create([
+            'description' => $validatedData['description'],
+            'price' => $validatedData['price'],
+            'id_size' => $validatedData['id_size'],
+            'id_style' => $validatedData['id_style']
+        ]);
+ 
+       return redirect()->route('clothes.create')->with('success', 'Roupa cadastrada com sucesso!');
 
     }
+    
 
     
     public function show(string $id)
