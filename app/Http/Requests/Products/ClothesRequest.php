@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Products;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,7 +25,8 @@ class ClothesRequest extends FormRequest
             'description' => 'string|max:255',
             'id_size' => 'integer',
             'id_style' => 'integer',
-            'price' => 'decimal:10,2'
+            'price' => 'decimal:2',
+            'amount' => 'integer'
         ];
     }
 

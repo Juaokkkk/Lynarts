@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Sales\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,18 +19,18 @@ class Sale extends Model
     ];
 
     public function SalesClothing(){
-        return $this->hasMany('App\Models\SalesClothing');
+        return $this->hasMany('App\Models\Sales\SalesClothing');
     }
 
     public function SalesMethod(){
-        return $this->hasMany('App\Models\SalesMethod');
+        return $this->hasMany('App\Models\Sales\SalesMethod');
     }
 
     public function User(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\Entities\User');
     }
 
     public function Customer(){
-        return $this->belongsTo('App\Models\Customer');
+        return $this->belongsTo('App\Models\Entities\Customer');
     }
 }

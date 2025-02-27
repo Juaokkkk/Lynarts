@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Products;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Database\QueryException;
 
-use App\Http\Requests\SizeRequest;
+use App\Http\Requests\Products\SizeRequest;
 
-use App\Models\Size;
+use App\Models\Products\Size;
 
 class SizeController extends Controller
 {
@@ -26,14 +27,15 @@ class SizeController extends Controller
 
         try {
 
-            Size::create($request->validated());
+            $data = $request->validated();
+            Size::create($data);
 
-            return  redirect()->route('clothes.index')->with('sucess', 'Novo tamanho cadastrado com sucesso!');
+            return  redirect()->route('clothes.create')->with('sucess', 'Novo tamanho cadastrado com sucesso!');
         }
 
         catch(QueryException $error){
 
-            return  redirect()->route('clothes.index')->with('error', 'Erro ao cadastrar novo modelo');
+            return  redirect()->route('clothes.create')->with('error', 'Erro ao cadastrar novo modelo');
         }
 
     }

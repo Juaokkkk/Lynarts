@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,6 +16,6 @@ class Size extends Model
     ];
 
     public function Clothes(){
-        return $this->hasMany('App\Models\Clothes');
+        return $this->hasMany('App\Models\Products\Clothes');
     }
 }

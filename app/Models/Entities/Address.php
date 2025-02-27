@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +22,6 @@ class Address extends Model
 
 
     public function Customer(){
-        return $this->belongsTo('App\Models\Customer');
+        return $this->belongsTo('App\Models\Entities\Customer');
     }
 }

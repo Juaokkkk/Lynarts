@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('path')->nullable();
             $table->decimal('price', 10,2);
+            $table->integer('amount');
             $table->timestamp('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->boolean('active')->default(true);

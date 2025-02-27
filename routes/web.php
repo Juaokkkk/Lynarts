@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ClothesController;
-use App\Http\Controllers\SizeController;
-use App\Http\Controllers\StyleController;
+use App\Http\Controllers\Products\ClothesController;
+use App\Http\Controllers\Products\SizeController;
+use App\Http\Controllers\Products\StyleController;
 
 Route::get('/', function () {
     return view('home');
@@ -25,6 +25,8 @@ Route::middleware([
         })->name('dashboard');
     });
     
-Route::resource('clothes', ClothesController::class);
-Route::resource('size', SizeController::class);
-Route::resource('style', StyleController::class);
+    Route::prefix('products')->group(function () {
+        Route::resource('clothes', ClothesController::class);
+        Route::resource('sizes', SizeController::class);
+        Route::resource('styles', StyleController::class);
+    });

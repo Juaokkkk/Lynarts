@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,15 +17,15 @@ class Customer extends Model
     ];
 
     public function Number(){
-        return $this->hasMany('App\Models\Number');
+        return $this->hasMany('App\Models\Entities\Number');
     }
 
     public function Address(){
-        return $this->hasMany('App\Models\Address');
+        return $this->hasMany('App\Models\Entities\Address');
     }
 
     public function Sale(){
-        return $this->hasMany('App\Models\Sale');
+        return $this->hasMany('App\Models\Sales\Sale');
     }
 
 }

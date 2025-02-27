@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Method extends Model
+class Number extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'tax',
+        'id_customer',
+        'DDD',
+        'number',
         'updated_at',
         'active',
     ];
 
-    public function SalesMethod(){
-        return $this->hasMany('App\Models\SaleMethod');
+    public function Customer(){
+        return $this->belongsTo('App\Models\Entities\Customer');
     }
-
 }
