@@ -6,7 +6,8 @@
     <div class="container-form">
         <div class="box-form size">
 
-            <form action="{{ route('size.store') }}" method="POST">
+            <form action="{{ route('sizes.store') }}" method="POST">
+                @csrf
                 <label for="name">Tamanho novo</label>
                 <input type="text" name="name">
                 <button type="submit">Cadastrar</button>
