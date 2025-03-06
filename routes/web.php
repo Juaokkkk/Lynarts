@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Products\ClothesController;
 use App\Http\Controllers\Products\SizeController;
 use App\Http\Controllers\Products\StyleController;
+use App\Http\Controllers\Sales\SaleController;
+use App\Http\Controllers\Sales\MethodController;
 
 Route::get('/', function () {
     return view('home');
@@ -29,4 +31,9 @@ Route::middleware([
         Route::resource('clothes', ClothesController::class);
         Route::resource('sizes', SizeController::class);
         Route::resource('styles', StyleController::class);
+    });
+
+    Route::prefix('sales')->group(function (){
+        Route::resource('sales', SaleController::class);
+        Route::resource('methods', SaleController::class);
     });

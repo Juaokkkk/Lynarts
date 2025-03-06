@@ -55,6 +55,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="#">Consultar</a></li>
                 <li><a href="{{route('clothes.create')}}">Criar Produto</a></li>
+                <li><a href="{{ route('sales.index') }}">Venda</a></li>
                 <li><a href="#">Catalogo</a></li>
                 <li><a href="{{route('suporte')}}">Suporte</a></li>
             @endauth
