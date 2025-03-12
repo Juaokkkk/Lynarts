@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_customer')->constrained('customers','id')
+            $table->foreignId('customer_id')->constrained('customers','id')
                                             ->onDelete('cascade')
                                             ->onUpdate('cascade');
             $table->string('road');
             $table->string('neighborhood');
             $table->string('city');
             $table->string('cep')->unique();
-            $table->string('complement');
+            $table->string('complement')->nullable();
             $table->timestamp('created_at');
             $table->dateTime('updated_at');
             $table->boolean('active')->default(true);
