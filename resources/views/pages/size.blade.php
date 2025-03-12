@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container-form">
-        <div class="box-form size">
+        <div class="size">
 
             <form action="{{ route('sizes.store') }}" method="POST">
                 @csrf

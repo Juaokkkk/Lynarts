@@ -8,7 +8,7 @@ body{
     justify-content: center;
     background-color: #dbccc4;  
     width: 100VW;
-    height:100vh; 
+    height:120vh; 
 }
 
 
@@ -76,16 +76,34 @@ button:hover {
 
 
 .size{
-    width: 30%;
-    height: 35%;             /* coloquei a classe size na "box-form da pagina "size"*/           
+    width: 40%;
+    height: 50%;             /* coloquei a classe size na "box-form da pagina "size"*/           
     margin-bottom: 20%;
+    background-color: #796255; 
+    padding: 20px;  
+    border-radius: 12px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20%;  
 }
 
 
 .style{
-    width: 30%;
-    height: 35%;             /* coloquei a classe style na "box-form da pagina "style"*/           
+    width: 40%;
+    height: 50%;             /* coloquei a classe style na "box-form da pagina "style"*/          
     margin-bottom: 20%;
+    background-color: #796255; 
+    padding: 20px;  
+    border-radius: 12px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20%; 
 }
 
 

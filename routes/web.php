@@ -16,6 +16,7 @@ Route::get('suporte', function (){
     return view('pages.suport');
 })->name('suporte');
 
+Route::get('catalogo', [ClothesController::class, 'index'])->name('catalogo');
 
 Route::middleware([
     'auth:sanctum',

@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container-form">
-        <div class="box-form style">
+        <div class="style">
 
             <form action="{{ route('styles.store') }}" method="POST">
                 @csrf

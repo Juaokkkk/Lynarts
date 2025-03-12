@@ -1,4 +1,3 @@
-
 <div class="nav-top">
     <div class="search">
         <input type="search" name="search" id="search" placeholder="Pesquisa..."> 
@@ -55,8 +54,8 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="#">Consultar</a></li>
                 <li><a href="{{route('clothes.create')}}">Criar Produto</a></li>
+                <li><a href="{{route('catalogo')}}">Catalogo</a></li>
                 <li><a href="{{ route('sales.index') }}">Venda</a></li>
-                <li><a href="#">Catalogo</a></li>
                 <li><a href="{{route('suporte')}}">Suporte</a></li>
             @endauth
         </ul>

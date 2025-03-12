@@ -4,16 +4,15 @@
     @section('content')
 
         <div class="container-form">
-
-
+            
             <div class="box-form">
 
                 <form action="{{ route('clothes.store') }}" method="POST">
                     @csrf
 
-                    <h1>{{ session('error') }}</h1>
-                    <h1>{{ session('success') }}</h1>
-
+                    <h5 style="text-align: center; color: red;">{{ session('error' )}}</h5>
+                    <h5 style="text-align: center; color:rgb(0, 255, 0);">{{ session('success') }}</h5>
+                   
 
                     <label for="description">Descrição</label>
                     <input type="text" name="description">

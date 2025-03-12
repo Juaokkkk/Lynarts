@@ -18,7 +18,11 @@ class ClothesController extends Controller
 {
     public function index()
     {
-        
+            // Pega todos os produtos cadastrados
+    $clothes = Clothes::all();
+
+    // Retorna a view 'pages.catalog' com os dados dos produtos
+    return view('pages.catalog', ['clothes' => $clothes]);
     }
 
  
@@ -45,7 +49,7 @@ class ClothesController extends Controller
         } catch (QueryException $error){
 
             return redirect()->route('clothes.create')
-                ->with('error', 'Roupa cadastrada com sucesso!' . $error->getMessage());
+                ->with('error', 'Falha ao cadastrar a roupa!' . $error->getMessage());
 
         }
 

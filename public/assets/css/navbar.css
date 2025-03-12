@@ -131,6 +131,10 @@ header{
     white-space: nowrap;
 }
 
+.links{
+    width: 100%;
+}
+
 nav {
     display: flex;
     width: 100%;
@@ -144,10 +148,11 @@ nav ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20%;
+    gap: 8%;
     list-style: none;
     font-size: 15pt;
     white-space: nowrap;
+    margin-right: 3%;
 }
 
 nav ul li a {
