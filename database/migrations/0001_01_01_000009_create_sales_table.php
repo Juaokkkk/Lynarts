@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignId('id_customer')->constrained('customers','id')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
-            $table->decimal('totalValue');
-            $table->string('situation');
+            $table->decimal('totalValue')->nullable();
+            $table->string('situation')->default("ABERTA");
             $table->timestamp('created_at');
             $table->dateTime('updated_at');
             $table->boolean('active')->default(true);
