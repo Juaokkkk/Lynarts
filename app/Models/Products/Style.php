@@ -16,6 +16,6 @@ class Style extends Model
     ];
 
     public function Clothes(){
-        return $this->hasMany('App\Models\Products\Clothes');
+        return $this->hasMany('App\Models\Products\Clothes', 'id_style');
     }
 }

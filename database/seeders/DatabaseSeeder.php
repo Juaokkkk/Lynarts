@@ -2,15 +2,16 @@
 
 namespace Database\Seeders;
 
-
+use App\Models\Entities\Customer;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-use App\Models\Entities\Customer;
-use App\Models\Entities\Address;
-use App\Models\Entities\Number;
+use Database\Seeders\CustomerSeeder;
+use Database\Seeders\ClothesSeeder;
+use Database\Seeders\SizeSeeder;
+use Database\Seeders\StyleSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -20,11 +21,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Customer::factory()
-            ->has(Address::factory()->count(1))
-            ->has(Number::factory()->count(1))
-            ->count(10)
-            ->create();
+
+        $this->call([
+
+            CustomerSeeder::class,
+            SizeSeeder::class,
+            StyleSeeder::class,
+            ClothesSeeder::class,
+            
+        ]);
 
     }
 }

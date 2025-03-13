@@ -24,12 +24,12 @@ class Clothes extends Model
         return $this->hasMany('App\Models\Sales\SalesClothing');
     }
 
-    public function Style(){
-        return $this->belongsTo('App\Models\Products\Style');
+    public function size(){
+        return $this->belongsTo('App\Models\Products\Size', 'id_size');
     }
-
-    public function Size(){
-        return $this->belongsTo('App\Models\Products\Size');
-    }
+    
+    public function style(){
+        return $this->belongsTo('App\Models\Products\Style', 'id_style');
+    }    
 
 }
