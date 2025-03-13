@@ -12,7 +12,7 @@
     <div class="account">
         @guest
         <div class="login">
-           <a href="login">
+           <a href="/login">
             <i class="fa-regular fa-user" style="color: #ffffff;"></i>
             Login
            </a>
@@ -20,7 +20,7 @@
         </div>
         <div class="create-account">
             
-            <a href="register">
+            <a href="/register">
                 <img src="\assets/img/userpluss.png">
                 Criar Conta
              </a>

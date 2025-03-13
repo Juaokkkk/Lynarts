@@ -10,7 +10,7 @@ class Number extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_customer',
+        'customer_id',
         'DDD',
         'number',
         'updated_at',

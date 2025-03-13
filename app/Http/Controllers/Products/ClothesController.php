@@ -18,11 +18,10 @@ class ClothesController extends Controller
 {
     public function index()
     {
-            // Pega todos os produtos cadastrados
-    $clothes = Clothes::all();
 
-    // Retorna a view 'pages.catalog' com os dados dos produtos
-    return view('pages.catalog', ['clothes' => $clothes]);
+    $clothes = Clothes::with(['size', 'style'])->get();
+
+    return view('pages.catalog', compact('clothes'));
     }
 
  
