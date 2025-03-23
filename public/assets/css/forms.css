@@ -26,6 +26,11 @@ body{
     margin-bottom: 5%;
 }
 
+.mini {
+    height: 55%; 
+    margin-top: -15%;
+}
+
 
 form {
     width: 100%;
@@ -113,6 +118,11 @@ button:hover {
         width: 45%;  
         min-height: 90%;
         background-color: 796255;
+    }
+
+    .mini{
+        min-height: 30%; 
+        margin-top: -15%;
     }
 
     label, input, select, button {

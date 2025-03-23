@@ -24,6 +24,13 @@ class ClothesController extends Controller
     return view('pages.catalog', compact('clothes'));
     }
 
+    public function delete(){
+
+        $clothes = Clothes::with(['size', 'style'])->get();
+        
+        return view('pages.delete', compact('clothes'));
+    }
+
  
     public function create()
     {
@@ -74,8 +81,14 @@ class ClothesController extends Controller
         //
     }
 
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function destroy(string $id){
+
+    $cloth = Clothes::findOrFail($id);
+
+    $cloth->delete();
+
+    return redirect()->route('deletar')->with('success', 'Produto deletado com sucesso!');
 }
+
+}
+

@@ -18,6 +18,8 @@ Route::get('suporte', function (){
 
 Route::get('catalogo', [ClothesController::class, 'index'])->name('catalogo');
 
+Route::get('deletar', [ClothesController::class, 'delete'])->name('deletar');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -38,3 +40,6 @@ Route::middleware([
         Route::resource('sales', SaleController::class);
         Route::resource('methods', SaleController::class);
     });
+
+
+    Route::delete('/clothes/{id}', [ClothesController::class, 'destroy'])->name('clothes.destroy');
