@@ -4,12 +4,25 @@ namespace App\Http\Controllers\Sales;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Sales\SaleRequest;
+
+use App\Models\Products\Clothes;
+use App\Models\Entities\User;
+use App\Models\Entities\Customer;
+use App\Models\Sales\Method;
+use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
     public function index(){
 
-        return view("pages.sale");
+        $user = Auth::user();
+        $users = User::all();
+        $clothes = Clothes::all();
+        $customers = Customer::all();
+        $methods = Method::all();
+
+        return view("pages.sale", compact('user','users', 'clothes', 'customers', 'methods'));
 
     }
 
@@ -17,7 +30,7 @@ class SaleController extends Controller
 
     }
 
-    public function store(SizeRequest $request){
+    public function store(SaleRequest $request){
 
     }
 
@@ -27,9 +40,10 @@ class SaleController extends Controller
 
     public function edit(string $id){
 
+
     }
 
-    public function update(Request $request, string $id){
+    public function update(SaleRequest $request, string $id){
 
     }
 
