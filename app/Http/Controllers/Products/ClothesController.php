@@ -24,13 +24,20 @@ class ClothesController extends Controller
     return view('pages.catalog', compact('clothes'));
     }
 
+    public function delete(){
+
+        $clothes = Clothes::with(['size', 'style'])->get();
+        
+        return view('pages.delete', compact('clothes'));
+    }
+
  
     public function create()
     {
         $sizes =  Size::all();
         $styles = Style::all();
         
-        return view("pages.clothes", ['sizes' => $sizes], ['styles' => $styles]);
+        return view("pages.clothes", compact('sizes', 'styles'));
     }
 
 
@@ -65,17 +72,35 @@ class ClothesController extends Controller
 
     public function edit(string $id)
     {
-        //
+        $sizesAll =  Size::all();
+        $stylesAll = Style::all();
+        $clothing = Clothes::where('id', $id)->first();
+        $size= Size::where('id', $clothing->id_size)->first();
+        $style= Style::where('id', $clothing->id_style)->first();
+
+        return view("pages.clothesEdit", compact('clothing', 'sizesAll', 'stylesAll', 'size', 'style'));
     }
 
 
     public function update(ClothesRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        
+        $clothing = Clothes::findOrFail($id);
+        $clothing->update($data);
+
+        return redirect()->route('deletar')->with('success', 'Produto editado com sucesso!');
+
     }
 
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function destroy(string $id){
+
+    $cloth = Clothes::findOrFail($id);
+
+    $cloth->delete();
+
+    return redirect()->route('deletar')->with('success', 'Produto deletado com sucesso!');
 }
+
+}
+

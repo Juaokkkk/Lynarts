@@ -5,8 +5,7 @@
 
 <div class="container-form">
 
-
-    <div class="box-form">
+    <div class="box-form mini">
 
 <form>
     @csrf
@@ -26,7 +25,7 @@
     <label></label>
     <input>
 
-    <button type="submit"></button>
+    <button type="submit">Enviar</button>
 </form>
 
 </div>

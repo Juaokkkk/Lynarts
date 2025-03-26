@@ -12,7 +12,7 @@ use App\Models\Entities\Customer;
 use App\Models\Sales\Method;
 use Illuminate\Support\Facades\Auth;
 
-class SalesController extends Controller
+class SaleController extends Controller
 {
     public function index(){
 
@@ -39,6 +39,7 @@ class SalesController extends Controller
     }
 
     public function edit(string $id){
+
 
     }
 

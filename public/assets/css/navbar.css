@@ -55,6 +55,10 @@ header{
     transition: all 0.3s ease; /* Suaviza as mudanças de estilo */
 }
 
+.nav-top buttom{
+    width: 23px;
+}
+
 .fa-magnifying-glass{
     border-radius: 50%;
     padding: 2%;
@@ -152,6 +156,7 @@ nav ul {
     list-style: none;
     font-size: 15pt;
     white-space: nowrap;
+    margin-top: 1%;
     margin-right: 3%;
 }
 
