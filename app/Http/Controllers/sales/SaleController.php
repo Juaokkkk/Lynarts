@@ -16,13 +16,14 @@ class SaleController extends Controller
 {
     public function index(){
 
-        $user = Auth::user();
-        $users = User::all();
-        $clothes = Clothes::all();
-        $customers = Customer::all();
-        $methods = Method::all();
+        $User = Auth::user();
+        $Users = User::all();
+        $Clothes = Clothes::all();
+        $Customers = Customer::all();
+        $Methods = Method::all();
 
-        return view("pages.sale", compact('user','users', 'clothes', 'customers', 'methods'));
+
+        return view("pages.sale", compact('User','Users', 'Clothes', 'Customers', 'Methods'));
 
     }
 
