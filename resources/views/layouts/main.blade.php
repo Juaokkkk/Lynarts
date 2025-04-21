@@ -17,10 +17,11 @@
 </head>
 
 <body>
-    <header>
-        @include('layouts.navbar')
-    </header>
-
+    @if (!Request::is('sales*'))
+        <header>
+            @include('layouts.navbar')
+        </header>
+    @endif
     <div class="content">
         @yield('content')
     </div>

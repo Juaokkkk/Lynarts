@@ -3,12 +3,20 @@
 
 @section('content')
 
+
 <div class="setor setor-imagens">
+
+    <div class="return-button">
+        <button onclick="window.history.back()">
+            ⬅ Voltar
+        </button>    
+    </div>
     <h3>Imagens dos Produtos</h3>
     <div class="produtos-imagem-container">
-        <img src="\assets/img/JA-picture.PNG" alt="Produto 1">
+        <img src="\assets/img/Lynarts.png" alt="Produto 2">   
         <img src="\assets/img/Lynarts.png" alt="Produto 2">
-        <img src="\assets/img/JV-picture.PNG" alt="Produto 3">
+        <img src="\assets/img/Lynarts.png" alt="Produto 2">
+
     </div>
 </div>
 <div class="container-sale">
@@ -49,7 +57,7 @@
             </select>
             <label for="search">Produto</label>
             <div>
-            <input list="clothes" id="search" name="search" style="width: 80%">
+            <input list="clothes" id="search" name="search" autocomplete="off" style="width: 80%">
             
             <datalist id="clothes">
                 @foreach ($Clothes as $clothing)

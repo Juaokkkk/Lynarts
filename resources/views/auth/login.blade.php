@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <!-- Aqui você substitui o logo por sua imagem personalizada -->
+            <img src="{{ asset('assets/img/Lynarts.png') }}" alt="Logo" style="width: 150px; height: auto;" />
         </x-slot>
 
         <x-validation-errors class="mb-4" />

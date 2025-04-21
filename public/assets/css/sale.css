@@ -34,7 +34,7 @@ html, .container-sale {
 .setor-esquerdo {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding: 20px;
     gap: 30px;
@@ -121,15 +121,33 @@ input:focus {
 /* Nova Seção para Imagens dos Produtos */
 .setor-imagens {
     background-color: #dbccc4;
-    padding: 20px;
+    padding: 10px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
     text-align: center;
     width: 100%;
+}
+
+.return-button {   
+    align-self: flex-start; /* Faz o botão ficar à esquerda */
+}
+
+.return-button button {
+    padding: 10px 20px;
+    background-color: #645146;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.return-button button:hover {
+    cursor: pointer;
+    background-color: #4d3a30;
 }
 
 .produtos-imagem-container {
