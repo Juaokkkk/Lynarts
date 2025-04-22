@@ -45,8 +45,23 @@ class ClothesController extends Controller
     {
         try{
 
-            $data = $request->validated();
-            // dd($data);
+
+            $data = $request->validated();   
+
+            if ($request->hasFile('img') && $request->file('img')->isValid()) {
+
+                $imgFile = $request->file('img'); 
+
+                $extension = $imgFile->extension();
+                
+                $imageName = md5($imgFile->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            
+                $imgFile->move(public_path('assets/img'), $imageName);
+            
+                $data['path'] = $imageName;
+            }
+
+            
             Clothes::create($data);
      
            return redirect()->route('clothes.create')
