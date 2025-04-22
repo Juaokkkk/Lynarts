@@ -1,15 +1,29 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.main')
+@section('title','Catalogo')
+@section('content')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+<h1> Hello Word!</h1>
+
+<h2>Produtos:</h2>
+@php
+    $count = 0;
+    foreach ($Clothes as $Clothing)
+    {
+        $count += 1;
+    }
+@endphp
+<p>{{ $count }}</p>
+
+
+<h2>Vendas:</h2>
+@php
+    $count = 0;
+    foreach ($Sales as $sale)
+    {
+        $count += 1;
+    }
+@endphp
+<p>{{ $count }}</p>
+
+
+@endsection

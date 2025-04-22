@@ -1,8 +1,5 @@
 @extends('layouts.main')
 @section('title','Catalogo')
-{{-- @php
-    dd($clothes);
-@endphp --}}
 @section('content')
     
     <div class="container-catalog">
