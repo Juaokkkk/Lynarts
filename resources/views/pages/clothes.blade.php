@@ -7,7 +7,7 @@
             
             <div class="box-form">
 
-                <form action="{{ route('clothes.store') }}" method="POST">
+                <form action="{{ route('clothes.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <h5 style="text-align: center; color: red;">{{ session('error' )}}</h5>
@@ -59,6 +59,9 @@
 
                     <label for="amount">Quantidade</label>
                     <input type="number" name="amount">
+
+                    <label for="img">Selecione uma imagem</label>
+                    <input type="file" name="img">
 
                     <button type="submit">Enviar</button>
 

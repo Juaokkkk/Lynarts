@@ -25,8 +25,9 @@ class ClothesRequest extends FormRequest
             'description' => 'string|max:255',
             'id_size' => 'integer',
             'id_style' => 'integer',
-            'price' => 'decimal:2',
-            'amount' => 'integer'
+            'price' => 'decimal:2|min:0',
+            'amount' => 'integer',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ];
     }
 
@@ -40,7 +41,10 @@ class ClothesRequest extends FormRequest
             'style.exists' => 'O estilo informado não existe.',
             'price.required' => 'O preço é obrigatório.',
             'price.numeric' => 'O preço deve ser um número.',
-            'price.min' => 'O preço não pode ser negativo.'
+            'price.min' => 'O preço não pode ser negativo.',
+            'img.image' => 'O arquivo enviado deve ser uma imagem.',
+            'img.mimes' => 'A imagem deve ser do tipo: jpeg, png, jpg, gif ou svg.',
+            'img.max' => 'A imagem não pode ultrapassar 2MB.',
         ];
     }
 }
