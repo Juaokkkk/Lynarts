@@ -20,11 +20,18 @@ class ClothesFactory extends Factory
      */
     public function definition(): array
     {
+         $names = [
+        'Camiseta Básica',
+        'Calça Jeans',
+        'Jaqueta de Couro',
+        'Vestido Floral',
+        'Bermuda Esportiva'
+         ];
 
         $faker = FakerFactory::create('pt_BR');
 
         return [
-            'description' => fake()->word(),
+            'description' => $this->faker->randomElement($names),
             'price' => fake()->randomFloat(2, 0, 1000),
             'amount' => fake()->randomNumber(2),
         ];

@@ -1,7 +1,7 @@
 <div class="container-home">
     <div class="grid">
         <div class="box-consultar">
-            <a href="#">Consultar</a>
+            <a href="{{route('sales.index')}}">Vendas</a>
         </div>
         <div class="box-add">
             <a href="{{route('clothes.create')}}">Criar Produto</a>

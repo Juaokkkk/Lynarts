@@ -8,14 +8,14 @@ body{
     justify-content: center;
     background-color: #dbccc4;  
     width: 100VW;
-    height:120vh; 
+    height:100%; 
 }
 
 
 .box-form {
     background-color: #796255;  
     width: 40%;  
-    height: 75%; 
+    height: 100%; 
     padding: 20px;  
     border-radius: 12px;  
     display: flex;

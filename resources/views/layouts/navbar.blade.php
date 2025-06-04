@@ -52,10 +52,9 @@
             @endguest
             @auth
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Consultar</a></li>
                 <li><a href="{{route('clothes.create')}}">Criar Produto</a></li>
                 <li><a href="{{route('catalogo')}}">Catalogo</a></li>
-                <li><a href="{{ route('sales.index') }}">Venda</a></li>
+                <li><a href="{{route('sales.index')}}">Vendas</a></li>
                 <li><a href="{{route('suporte')}}">Suporte</a></li>
             @endauth
         </ul>

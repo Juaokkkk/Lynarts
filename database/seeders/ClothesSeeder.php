@@ -33,7 +33,7 @@ class ClothesSeeder extends Seeder
             ->each(function ($clothes) use ($sizes, $styles) {
                 $clothes->id_size = $sizes->random()->id;
                 $clothes->id_style = $styles->random()->id;
-                $clothes->path = "tanguinha_mascula.webp";
+                $clothes->path = "lyna-image-planB.png";
                 $clothes->save();
             });
     }
