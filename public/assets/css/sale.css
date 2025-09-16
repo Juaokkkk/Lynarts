@@ -10,12 +10,10 @@ html, .container-sale {
 
 .container-sale {
     display: grid;
-    grid-template-columns: 2fr 3fr 2fr; /* 1 coluna estreita para esquerda e direita, 3 para o centro */
-    grid-template-rows: 5fr 1fr auto; /* 1 linha automática para cabeçalho, 1 para conteúdo e 1 para imagens */
-    width: 100%; /* Largura 100% da tela */
-    height: 100vh; /* Altura 100% da tela */
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-rows: auto 1fr;
+    width: 100%;
     background-color: #dbccc4;
-    position: relative;
     padding: 30px;
     gap: 20px;
 }
@@ -27,18 +25,13 @@ html, .container-sale {
     align-items: center;
     background-color: #796255;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Setor esquerdo (Logo e Valor Total) */
+/* LADO ESQUERDO */
 .setor-esquerdo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
     gap: 30px;
-    height: 100%;
 }
 
 .logo-sale {
@@ -47,8 +40,8 @@ html, .container-sale {
     background-color: #dbccc4;
     border-radius: 12px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .logo-sale img {
@@ -62,18 +55,13 @@ html, .container-sale {
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
-    color: #333;
-    width: 100%;
     text-align: center;
 }
 
-/* Setor central (Formulário de Inputs) */
+/* CENTRO */
 .setor-central {
-    display: flex;
-    justify-content: center;
     padding: 20px;
     gap: 30px;
-    height: 100%;
 }
 
 form {
@@ -84,8 +72,8 @@ form {
     max-width: 500px;
 }
 
-input {
-    padding: 15px;
+input, select {
+    padding: 12px;
     font-size: 16pt;
     border: 2px solid #645146;
     border-radius: 8px;
@@ -95,44 +83,81 @@ input {
     transition: border-color 0.3s ease;
 }
 
-input:focus {
+input:focus, select:focus {
     border-color: #523e33;
 }
 
-/* Setor direito (Histórico) */
+/* LADO DIREITO */
 .setor-direito {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
-    height: 100%;
+    width: 100%;
 }
 
 .historico {
     background-color: #f4f1e4;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     width: 100%;
-    max-width: 350px;
-    height: 90%;
+    max-width: 400px;
+    max-height: 75vh;
     overflow-y: auto;
 }
 
-/* Nova Seção para Imagens dos Produtos */
+#sale-history li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    word-break: break-word; /* Permite quebrar nomes longos */
+}
+
+.item-info {
+    flex: 1 1 auto;
+    margin-right: 10px; /* Espaço para valor e botão */
+}
+
+.item-actions {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap; /* Valor e botão não quebram */
+}
+
+.remove-item {
+    background-color: #c0392b;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.remove-item:hover {
+    background-color: #e74c3c;
+}
+
+/* IMAGENS DOS PRODUTOS */
 .setor-imagens {
     background-color: #dbccc4;
     padding: 10px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
     width: 100%;
 }
 
 .return-button {   
-    align-self: flex-start; /* Faz o botão ficar à esquerda */
+    align-self: flex-start;
 }
 
 .return-button button {
@@ -146,15 +171,14 @@ input:focus {
 }
 
 .return-button button:hover {
-    cursor: pointer;
     background-color: #4d3a30;
 }
 
 .produtos-imagem-container {
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 .produtos-imagem-container img {
@@ -162,39 +186,36 @@ input:focus {
     height: 120px;
     object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Responsividade */
+/* RESULTADOS DA BUSCA */
+#search-results {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #645146;
+    width: 80%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
     .container-sale {
-        grid-template-columns: 1fr; /* 1 coluna para telas pequenas */
-        grid-template-rows: repeat(5, auto); /* 5 linhas */
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, auto);
         height: auto;
+        padding: 15px;
+        gap: 15px;
     }
 
-    .setor-esquerdo,
-    .setor-central,
-    .setor-direito,
-    .setor-imagens {
-        width: 100%; /* Setores ocupam toda a largura */
+    .setor-esquerdo, .setor-central, .setor-direito, .setor-imagens {
+        width: 100%;
         gap: 10px;
     }
 
-    form {
-        max-width: 100%;
-    }
-
-    .logo-sale {
-        max-width: 150px;
-    }
-
-    .produtos-imagem-container {
-        justify-content: center;
-    }
-
-    .produtos-imagem-container img {
-        width: 100px;
-        height: 100px;
-    }
+    form { max-width: 100%; }
+    .logo-sale { max-width: 150px; }
+    .produtos-imagem-container img { width: 100px; height: 100px; }
 }
