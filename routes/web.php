@@ -44,5 +44,7 @@ Route::middleware([
 
     Route::delete('/clothes/{id}', [ClothesController::class, 'destroy'])->name('clothes.destroy');
 
-    Route::get('/sale/search', [SaleController::class, 'search'])->name('sale.search');
+Route::get('/sale/search', [\App\Http\Controllers\Sales\SaleController::class, 'search'])
+    ->name('sale.search');
+
 
