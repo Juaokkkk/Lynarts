@@ -51,4 +51,13 @@ class SaleController extends Controller
     public function destroy(string $id){
 
     }
+
+    public function search(Request $request)
+{
+    $query = $request->get('q');
+    $products = Product::where('name', 'LIKE', "%{$query}%")->get();
+
+    return response()->json($products);
+}
+
 }
