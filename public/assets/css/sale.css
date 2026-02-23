@@ -102,10 +102,12 @@ input:focus, select:focus {
     align-items: center;
     padding: 20px;
     height: 100%;
+    gap: 10px;
 }
 
 .historico {
     background-color: #f4f1e4;
+    margin-top: 10px;
     padding: 30px;
     border-radius: 10px;
     width: 100%;
@@ -271,4 +273,14 @@ input:focus, select:focus {
 
 .historico-item .remove-item:hover {
     background-color: #c0392b; /* vermelho mais escuro ao passar o mouse */
+}
+
+.btn-finalizar{
+    background-color: rgb(255, 102, 102);
+    border-radius: 6px;
+}
+
+.btn-finalizar:hover{
+    background-color: rgb(221, 83, 83);
+    transition: ease-in-out 200ms;
 }

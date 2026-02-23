@@ -3,7 +3,7 @@
     width: 100%;
     height: 70vw;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -11,10 +11,10 @@
     width: 65%;
     height: 45%;
     display: flex;
-    align-items:center;
+    align-items:start;
     justify-content: center;
     gap: 10%;
-    margin-bottom: 10%;
+    
 }
 
 .card-left{
@@ -28,19 +28,7 @@
     justify-content: end;
     overflow: visible;
     color: white;
-}
-
-.card-right{
-    background-color: #796255;
-    width: 40%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
-    border-radius: 12px;
-    overflow: visible;
-    color: white;
+    margin-top: 12%;
 }
 
 .card-left h1{
@@ -49,16 +37,6 @@
 }
 
 .card-left h3{
-    position: relative;
-    top: -43%;
-}
-
-.card-right h1{
-    position: relative;
-    top: -45%;
-}
-
-.card-right h3{
     position: relative;
     top: -43%;
 }
@@ -75,17 +53,6 @@
     border-radius: 12px;
 }
 
-.photo-right{
-    background-image: url('/assets/img/JV-picture.png');
-    background-size: 105%; /* Faz a imagem cobrir toda a div */
-    background-position: center 40%; /* Centraliza a imagem */
-    background-repeat: no-repeat;
-    width: 85%;
-    height: 40%;
-    position: relative;
-    top: -50%;
-    border-radius: 12px;
-}
 
 .box-cards a{
     background-color:#cca695;
@@ -105,12 +72,12 @@
             margin-bottom: 5%;
         }
     
-        .card-left, .card-right{
+        .card-left{
             width: 45%; /* Aumentando a largura dos cards para uma visualização melhor em telas menores */
             height: 95%;
         }
     
-        .photo-left, .photo-right{
+        .photo-left{
             width: 80%; /* Aumentando a largura das imagens para uma melhor adaptação */
             height: 40%; /* Ajustando as alturas das fotos para balancear com os novos tamanhos */
             top: -45%;
@@ -130,19 +97,9 @@
             position: relative;
             top: -38%;
         }
-        
-        .card-right h1{
-            position: relative;
-            top: -40%;
-        }
-        
-        .card-right h3{
-            position: relative;
-            top: -38%;
-        }
     }
 
-.card-left:hover, .card-right:hover{
+.card-left:hover{
     transform: translateY(-10px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;

@@ -5,9 +5,9 @@
 
 <div class="setor setor-topo">
     <div class="return-button">
-        <button onclick="window.history.back()">
+        <button onclick="window.location.href='{{ route('home') }}'">
             ⬅ Voltar
-        </button>    
+        </button>   
     </div>
     <h2>VENDAS</h2>
 </div>
@@ -39,11 +39,10 @@
                 @endforeach
             </select>
 
-            <label for="id_cliente">Cliente</label>
-            <select name="id_custumer">
-                <option selected value="">Cliente</option>
+          <label for="id_customer">Cliente</label>
+            <select name="id_customer"> <option selected value="">Selecione o Cliente</option>
                 @foreach ($Customers as $customer)
-                    <option value={{ $customer->id }}>{{ $customer->name }}</option>
+                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                 @endforeach
             </select>
 
@@ -61,6 +60,9 @@
             <h3>Histórico</h3>
             <ul id="sale-history" class="list-group"></ul>
         </div>
+        <button id="finalizar-venda" class="btn-finalizar">
+            Finalizar compra
+        </button>
     </div>
 </div>
 
@@ -68,19 +70,20 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-$(document).ready(function(){
+  $(document).ready(function(){
+    console.log("Script de vendas carregado com sucesso.");
 
     let total = 0;
     let defaultImage = "/assets/img/Lynarts.png";
 
-    // Buscar produtos
+    // --- 1. BUSCAR PRODUTOS (AUTOCOMPLETE) ---
     $('#search').on('keyup', function(){
         let query = $(this).val();
         if(query.length > 1){
             $.ajax({
                 url: "{{ route('sale.search') }}",
                 type: "GET",
-                data: {q: query},
+                data: { q: query },
                 success: function(data){
                     let results = '';
                     data.forEach(product => {
@@ -90,7 +93,7 @@ $(document).ready(function(){
                                data-name="${product.description}" 
                                data-price="${product.price}" 
                                data-image="${product.image ?? defaultImage}">
-                                <img src="${product.image ?? defaultImage}" width="40"> 
+                                <img src="${product.image ?? defaultImage}" width="40" style="margin-right:10px"> 
                                 ${product.description} - R$ ${parseFloat(product.price).toFixed(2).replace('.', ',')}
                             </a>
                         `;
@@ -103,49 +106,99 @@ $(document).ready(function(){
         }
     });
 
-    // Selecionar produto
+    // --- 2. SELECIONAR PRODUTO E ADICIONAR AO HISTÓRICO ---
     $(document).on('click', '.select-product', function(e){
         e.preventDefault();
+        
+        let id = $(this).data('id');
         let name = $(this).data('name');
         let image = $(this).data('image');
         let price = parseFloat($(this).data('price'));
 
-        // trocar logo pela imagem do produto
+        // Trocar imagem principal
         $('#product-image').attr('src', image);
 
-        // adicionar no histórico
+        // Adicionar ao histórico visual (IMPORTANTE: Guardamos o data-id aqui para o loop final)
         $('#sale-history').append(`
-            <li class="historico-item">
+            <li class="historico-item" data-id="${id}">
                 <div class="info">
-                    <img src="${image}" class="thumb">
+                    <img src="${image}" class="thumb" style="width:30px; height:30px; border-radius:5px; margin-right:10px">
                     <span class="nome">${name}</span>
                 </div>
                 <span class="preco">R$ ${price.toFixed(2).replace('.', ',')}</span>
-                <button class="remove-item">X</button>
+                <button type="button" class="remove-item" style="color:red; margin-left:10px; border:none; background:none; cursor:pointer">X</button>
             </li>
         `);
 
-        // atualizar total
+        // Atualizar total acumulado
         total += price;
-        $('#total').text('Total: R$ ' + total.toFixed(2).replace('.', ','));
+        updateTotalDisplay();
 
-        // limpar input
+        // Limpar busca
         $('#search-results').html('');
-        $('#search').val('');
+        $('#search').val('').focus();
     });
 
-    // Remover item do histórico
+    // --- 3. REMOVER ITEM DO HISTÓRICO ---
     $(document).on('click', '.remove-item', function() {
         let item = $(this).closest('.historico-item');
         let priceText = item.find('.preco').text().replace('R$ ', '').replace(',', '.');
         let price = parseFloat(priceText);
 
         total -= price;
-        $('#total').text('Total: R$ ' + total.toFixed(2).replace('.', ','));
-
+        updateTotalDisplay();
         item.remove();
     });
 
+    // --- 4. FUNÇÃO PARA ATUALIZAR O TEXTO DO TOTAL ---
+    function updateTotalDisplay() {
+        if(total < 0) total = 0;
+        $('#total').text('Total: R$ ' + total.toFixed(2).replace('.', ','));
+    }
+
+    // --- 5. FINALIZAR VENDA (ENVIAR PARA O BANCO) ---
+    $('#finalizar-venda').on('click', function(e){
+        e.preventDefault();
+
+        // Criar array com os IDs de todos os produtos que estão no histórico
+        let produtosIds = [];
+        $('.historico-item').each(function() {
+            produtosIds.push($(this).data('id'));
+        });
+
+        // Validações básicas antes de enviar
+        let id_user = $('select[name="id_user"]').val();
+        let id_customer = $('select[name="id_customer"]').val();
+
+        if(!id_user) { alert('Selecione um Vendedor'); return; }
+        if(!id_customer) { alert('Selecione um Cliente'); return; }
+        if(produtosIds.length === 0) { alert('Adicione pelo menos um produto ao carrinho'); return; }
+
+        // Desativar botão para evitar cliques duplicados
+        let btn = $(this);
+        btn.prop('disabled', true).text('Processando...');
+
+        $.ajax({
+            url: "{{ route('sales.store') }}",
+            type: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                id_user: id_user,
+                id_customer: id_customer,
+                total: total,
+                products: produtosIds // Enviado como array para o Controller
+            },
+            success: function(response){
+                // Redirecionamento para a rota do PIX usando o ID retornado pelo banco
+                window.location.href = "/sales/sales/" + response.id + "/pix";
+            },
+            error: function(xhr){
+                btn.prop('disabled', false).text('Finalizar compra');
+                console.error("Erro no servidor:", xhr.responseText);
+                alert('Erro ao salvar venda. Verifique o console para detalhes.');
+            }
+        });
+    });
 });
 </script>
 
